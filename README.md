@@ -1,52 +1,57 @@
-# DKA3223 - AI UNTUK COMPUTER VISION
+# DKA3223 – AI UNTUK COMPUTER VISION
 
-## 📌 Maklumat Projek
+## 1.0 PENGENALAN PROJEK
 
-| Maklumat | Butiran |
-|---|---|
-| Kursus | DKA3223 - AI Untuk Computer Vision |
-| Program | Teknologi Komputeran |
-| Semester | Semester 3 DVM |
-| Nama | AMIR ADAM BIN AMIRUDDIN |
-| Angka Giliran | PKV0125KA001 |
-| Persekitaran | Google Colab |
-| Platform | GitHub |
-| Model | CNN & YOLO11n |
+Projek ini dibangunkan bagi kursus **DKA3223 – AI Untuk Computer Vision** dengan menggunakan persekitaran **Google Colab** dan teknologi **Computer Vision**.
 
----
+Projek ini memfokuskan kepada dua komponen utama iaitu:
 
-## 📖 1.0 Pengenalan
+* **Convolutional Neural Network (CNN)** untuk klasifikasi imej.
+* **YOLO11n** untuk pengesanan objek dan real-time inference.
 
-Projek ini dibangunkan bagi kursus **DKA3223 - AI Untuk Computer Vision**. Projek ini memfokuskan kepada pembangunan dan dokumentasi model Computer Vision menggunakan **Convolutional Neural Network (CNN)** dan **YOLO11n Object Detection**.
+Tujuan utama projek ini adalah untuk membangunkan, menguji dan mendokumentasikan model Computer Vision secara sistematik serta mengamalkan prinsip **Responsible AI** dalam proses pembangunan.
 
-Projek ini dilaksanakan menggunakan Google Colab sebagai persekitaran pembangunan dan GitHub sebagai platform pengurusan repositori. Tujuan utama projek adalah untuk mengurus fail projek secara sistematik, mendokumentasikan pembetulan kod, menjalankan eksperimen model serta mengamalkan prinsip **Responsible AI**.
+Semua fail projek disusun dalam repositori **GitHub** bagi memudahkan pengurusan kod, version control dan rujukan pada masa akan datang.
 
 ---
 
-## 🎯 2.0 Objektif Projek
+## 2.0 OBJEKTIF PROJEK
 
 Objektif projek ini adalah:
 
-- Membangunkan model Computer Vision menggunakan Google Colab.
-- Melaksanakan simulasi Convolutional Neural Network (CNN).
-- Melaksanakan pengesanan objek menggunakan YOLO11n.
-- Membetulkan ralat dan `FIX ME` dalam kod.
-- Menjalankan eksperimen terhadap confidence threshold.
-- Melaksanakan inferens imej dan video.
-- Mengamalkan version control menggunakan GitHub.
-- Mendokumentasikan aspek etika, privasi, hak cipta dan limitasi model.
+1. Membangunkan dan menguji model Computer Vision menggunakan Google Colab.
+2. Melaksanakan simulasi **Convolutional Neural Network (CNN)** untuk klasifikasi imej.
+3. Melaksanakan simulasi **YOLO11n** bagi pengesanan objek.
+4. Membuat pembetulan terhadap ralat kod dan memastikan notebook dapat dijalankan dengan baik.
+5. Menguji kesan perubahan **confidence threshold** terhadap jumlah objek yang dikesan.
+6. Melaksanakan inferens terhadap video dengan jumlah frame yang ditetapkan.
+7. Mengamalkan pengurusan repositori dan version control yang sistematik.
+8. Mengambil kira aspek etika, privasi data, hak cipta dan tanggungjawab pengguna dalam pembangunan AI.
 
 ---
 
-## 💻 3.0 Persekitaran Pembangunan
+## 3.0 PERSEKITARAN PEMBANGUNAN
 
-Persekitaran yang digunakan dalam projek:
+Projek ini dibangunkan menggunakan teknologi dan persekitaran berikut:
+
+| Teknologi / Platform | Kegunaan                                  |
+| -------------------- | ----------------------------------------- |
+| Google Colab         | Persekitaran pembangunan dan pengujian    |
+| Python               | Bahasa pengaturcaraan                     |
+| PyTorch              | Pembangunan dan latihan model CNN         |
+| YOLO11n              | Pengesanan objek                          |
+| GitHub               | Pengurusan repositori dan version control |
+| NVIDIA Tesla T4 GPU  | Pemprosesan dan inferens YOLO11n          |
+
+Semakan persekitaran sistem menunjukkan bahawa **CUDA GPU tersedia** dan peranti YOLO ditetapkan kepada GPU untuk membantu mempercepatkan proses inferens.
+
+---
+
+## 4.0 STRUKTUR PROJEK
+
+Struktur repositori projek disusun secara sistematik bagi memudahkan pengurusan fail, kod dan dokumentasi.
 
 ```text
-Google Colab
-Python
-PyTorch
-YOLO11n
 DKA3223-Computer-Vision/
 │
 ├── README.md
@@ -60,246 +65,411 @@ DKA3223-Computer-Vision/
 │
 └── documentation/
     └── project_report.pdf
+```
 
-GitHub
-CUDA GPU
-Tesla T4
-🧠 5.0 Convolutional Neural Network (CNN)
+Nama fail dan folder digunakan secara jelas supaya kandungan projek mudah dikenal pasti, diselenggara dan diuruskan.
 
-Simulasi CNN digunakan bagi proses klasifikasi imej. Kod telah diperiksa dan beberapa pembetulan dilakukan bagi memastikan notebook dapat dijalankan dengan baik.
+---
 
-Pembetulan yang dilakukan:
-5.1 Dataset Path
+# 5.0 SIMULASI CONVOLUTIONAL NEURAL NETWORK (CNN)
 
-Laluan dataset diperbaiki supaya lebih fleksibel. Folder train dan test dibina menggunakan os.path.join() dan kewujudannya disemak sebelum dataset dimuatkan.
+Komponen pertama projek ialah simulasi **Convolutional Neural Network (CNN)**.
 
-5.2 GPU dan Reproducibility
+Notebook CNN telah diperiksa dan beberapa pembetulan dibuat supaya program dapat dijalankan dengan lebih baik serta memenuhi spesifikasi tugasan.
 
-GPU diperiksa bagi memastikan peranti yang digunakan dapat dikenal pasti.
+## 5.1 Dataset Path
 
-Kod berikut digunakan:
+Pembetulan dilakukan pada laluan dataset supaya lebih fleksibel.
 
-torch.cuda.manual_seed_all(42)
+Folder `train` dan `test` dibina menggunakan `os.path.join()` dan kewujudan folder disemak sebelum dataset dimuatkan.
+
+Contoh:
+
+```python
+train_path = os.path.join(dataset_path, "train")
+test_path = os.path.join(dataset_path, "test")
+```
+
+---
+
+## 5.2 GPU dan Reproducibility
+
+Semakan GPU ditambah bagi memastikan peranti yang digunakan dapat dikenal pasti.
+
+`torch.cuda.manual_seed_all(42)` digunakan bagi membantu proses **reproducibility** apabila latihan menggunakan CUDA.
+
+Nama GPU aktif juga dipaparkan menggunakan:
+
+```python
 torch.cuda.get_device_name(0)
+```
 
-Penggunaan seed membantu meningkatkan kebolehulangan eksperimen apabila latihan menggunakan CUDA.
+---
 
-5.3 Visualisasi Dataset
+## 5.3 Visualisasi Dataset
 
-Oleh kerana imej telah melalui proses normalization, proses denormalization digunakan sebelum imej dipaparkan.
+Proses **denormalization** digunakan sebelum imej dipaparkan bagi mendapatkan paparan imej yang lebih sesuai.
 
-image = torch.clamp(image, 0, 1)
+Selain itu, fungsi berikut digunakan:
 
-Ini membantu memastikan nilai piksel berada dalam julat yang sesuai untuk visualisasi.
+```python
+torch.clamp(image, 0, 1)
+```
 
-5.4 Pembinaan Model CNN
+Fungsi tersebut memastikan nilai piksel berada dalam julat yang sesuai sebelum imej dipaparkan.
 
-Masalah saiz input bagi fully connected layer telah diperbaiki dengan menggunakan:
+---
 
+## 5.4 Saiz Input Model
+
+Masalah ketidakpadanan saiz **feature map** pada bahagian `fully connected layer` diperbaiki.
+
+`AdaptiveAvgPool2d((1,1))` digunakan bagi menghasilkan feature map yang lebih sesuai dan mengurangkan masalah ketidakpadanan dimensi input.
+
+Contoh:
+
+```python
 nn.AdaptiveAvgPool2d((1, 1))
+```
 
-Kaedah ini menghasilkan feature map bersaiz 64 × 1 × 1 sebelum proses Flatten().
+---
 
-5.5 Bilangan Kelas
+## 5.5 Bilangan Kelas
 
-Bilangan kelas tidak ditetapkan secara manual. Sebaliknya, bilangan kelas diperoleh daripada dataset:
+Bilangan kelas tidak lagi ditetapkan secara manual.
 
-len(train_dataset.classes)
+Sebaliknya, jumlah kelas diambil secara terus daripada dataset:
 
-Pendekatan ini membolehkan model menyesuaikan output berdasarkan jumlah kelas sebenar.
+```python
+num_classes = len(train_dataset.classes)
+```
 
-5.6 Confidence Score
+Kaedah ini menjadikan model lebih fleksibel sekiranya bilangan kelas dalam dataset berubah.
 
-Softmax digunakan bagi mendapatkan kebarangkalian setiap kelas. Nilai probability tertinggi digunakan sebagai confidence score dan dipaparkan dalam bentuk peratus.
+---
 
-🎯 6.0 YOLO11n Object Detection
+## 5.6 Confidence Score
 
-Projek ini turut menggunakan YOLO11n untuk melakukan pengesanan objek pada imej dan video.
+**Softmax** digunakan bagi mendapatkan kebarangkalian bagi setiap kelas.
 
-Model yang digunakan:
+Nilai kebarangkalian tertinggi digunakan sebagai **confidence score** dan dipaparkan dalam bentuk peratus.
 
-YOLO11n
-Model file: yolo11n.pt
-Device: GPU
-GPU: Tesla T4
-🔧 6.1 Pembetulan FIX ME
+Contoh:
 
-Sebanyak lima FIX ME telah diselesaikan dalam kod YOLO11n.
+```python
+probabilities = torch.softmax(outputs, dim=1)
+confidence, predicted = torch.max(probabilities, 1)
+```
 
-FIX ME 1 - Confidence Threshold
+---
+
+# 6.0 SIMULASI OBJECT DETECTION MENGGUNAKAN YOLO11n
+
+Komponen kedua projek ialah simulasi **Object Detection menggunakan YOLO11n**.
+
+Model `yolo11n.pt` digunakan untuk mengesan objek pada imej dan video.
+
+Lima pembetulan utama telah dilakukan pada kod seperti berikut.
+
+---
+
+## 6.1 FIX ME 1 – CONF_THRESHOLD
+
+Nilai confidence threshold ditetapkan kepada **0.25**.
+
+```python
 CONF_THRESHOLD = 0.25
+```
 
-Nilai ini digunakan untuk menentukan tahap keyakinan minimum sesuatu objek sebelum diterima sebagai hasil pengesanan.
+Nilai ini digunakan untuk menentukan tahap keyakinan minimum sesuatu pengesanan sebelum ia diterima sebagai objek yang dikesan.
 
-FIX ME 2 - IoU Threshold
+---
+
+## 6.2 FIX ME 2 – IOU_THRESHOLD
+
+Nilai IoU threshold ditetapkan kepada **0.45**.
+
+```python
 IOU_THRESHOLD = 0.45
+```
 
-Nilai IoU digunakan dalam proses Non-Maximum Suppression (NMS) untuk menguruskan bounding box yang bertindih.
+Nilai ini digunakan dalam proses **Non-Maximum Suppression (NMS)** bagi mengurangkan pengesanan bertindih terhadap objek yang sama.
 
-FIX ME 3 - Confidence Values
+---
+
+## 6.3 FIX ME 3 – CONF_VALUES
+
+Empat nilai confidence digunakan bagi menjalankan eksperimen.
+
+```python
 CONF_VALUES = [0.25, 0.45, 0.65, 0.85]
+```
 
-Empat nilai confidence digunakan bagi menjalankan eksperimen dan melihat kesan perubahan threshold terhadap jumlah objek yang dikesan.
+Eksperimen ini digunakan untuk membandingkan kesan perubahan confidence threshold terhadap jumlah objek yang dikesan.
 
-FIX ME 4 - Object Class Field
+---
+
+## 6.4 FIX ME 4 – OBJECT_CLASS_FIELD
+
+Kunci `"nama_kelas"` digunakan bagi mendapatkan nama kelas objek daripada rekod pengesanan.
+
+```python
 OBJECT_CLASS_FIELD = "nama_kelas"
+```
 
-Kunci nama_kelas digunakan untuk mendapatkan nama kelas objek daripada detection_records.
+Maklumat ini membolehkan pengiraan objek berdasarkan kelas dilakukan.
 
-FIX ME 5 - Maximum Frames
+---
+
+## 6.5 FIX ME 5 – MAX_FRAMES
+
+Jumlah frame maksimum ditetapkan kepada **120 frame**.
+
+```python
 MAX_FRAMES = 120
+```
 
-Jumlah frame maksimum ditetapkan kepada 120 bagi mengawal tempoh pemprosesan video dan penggunaan sumber GPU/RAM.
+Tetapan ini digunakan bagi mengawal tempoh pemprosesan video serta penggunaan sumber GPU dan RAM.
 
-📊 7.0 Keputusan Object Detection
+---
 
-Model YOLO11n berjaya mengesan sebanyak 5 objek dalam salah satu imej ujian.
+# 7.0 KEPUTUSAN PENGESANAN OBJEK
 
-Objek yang dikesan:
-No.	Kelas	Confidence
-1	bus	94.02%
-2	person	88.82%
-3	person	87.83%
-4	person	85.58%
-5	person	62.19%
-Jumlah objek mengikut kelas:
+Berdasarkan output ujian, model **YOLO11n** berjaya mengesan beberapa objek seperti `person` dan `bus`.
+
+Dalam salah satu output terperinci, sebanyak **5 objek** telah dikesan.
+
+| Objek  | Confidence |
+| ------ | ---------: |
+| Bus    |     94.02% |
+| Person |     88.82% |
+| Person |     87.83% |
+| Person |     85.58% |
+| Person |     62.19% |
+
+### Jumlah Objek Mengikut Kelas
+
+```text
 person : 4
 bus    : 1
+Jumlah : 5
+```
 
-Jumlah keseluruhan : 5
-📈 8.0 Eksperimen Confidence Threshold
+Keputusan ini menunjukkan bahawa model dapat mengenal pasti beberapa objek dalam imej ujian bersama nilai confidence bagi setiap pengesanan.
 
-Eksperimen dijalankan menggunakan empat nilai confidence threshold.
+---
 
-Threshold	Jumlah Objek	Analisis
-0.25	5	Mengesan objek utama dan objek separa terlindung
-0.45	5	Masih mengesan objek dengan keyakinan mencukupi
-0.65	4	Sebahagian objek dengan keyakinan lebih rendah ditapis
-0.85	4	Objek dengan keyakinan tinggi sahaja diluluskan
+# 8.0 EKSPERIMEN CONFIDENCE THRESHOLD
 
-Peningkatan confidence threshold menyebabkan sesetengah objek dengan nilai keyakinan lebih rendah ditapis daripada keputusan pengesanan.
+Eksperimen dijalankan menggunakan beberapa nilai confidence threshold bagi melihat perubahan jumlah objek yang dikesan.
 
-🎥 9.0 Video Inference
+| Confidence Threshold | Jumlah Objek | Analisis                                                    |
+| -------------------: | -----------: | ----------------------------------------------------------- |
+|                 0.25 |            5 | Mengesan objek utama dan objek separa terlindung.           |
+|                 0.45 |            5 | Masih mengesan objek dengan tahap keyakinan yang mencukupi. |
+|                 0.65 |            4 | Sebahagian objek dengan keyakinan lebih rendah ditapis.     |
+|                 0.85 |            4 | Hanya objek dengan keyakinan tinggi diluluskan.             |
 
-YOLO11n turut digunakan untuk proses inferens video.
+### Analisis
 
-Maklumat pemprosesan:
+Eksperimen menunjukkan bahawa peningkatan **confidence threshold** boleh menyebabkan pengesanan dengan nilai keyakinan lebih rendah ditapis.
 
-Jumlah frame diproses : 120
-Video output          : kv_tron_detection_output.mp4
+Secara umum:
 
-Jumlah detection sepanjang video:
+```text
+Confidence Threshold Rendah
+        ↓
+Lebih banyak pengesanan diterima
 
-person : 597
-car    : 120
-truck  : 120
-dog    : 21
+Confidence Threshold Tinggi
+        ↓
+Pengesanan dengan confidence rendah ditapis
+```
 
-Video berjaya diproses selepas semua lima FIX ME diselesaikan.
+---
 
-🔐 10.0 Etika dan Responsible AI
+# 9.0 REAL-TIME / VIDEO INFERENCE
 
-Projek ini mengambil kira prinsip Responsible AI dan etika profesional dalam pembangunan Computer Vision.
+Model **YOLO11n** turut digunakan untuk pemprosesan video.
 
-Antara amalan yang digunakan ialah:
+Sebanyak **120 frame** telah diproses dan video output disimpan sebagai:
 
-Menghormati hak cipta dan harta intelek.
-Menyatakan sumber kod dan dataset yang digunakan.
-Tidak menganggap kod atau dataset pihak lain sebagai hasil sendiri.
-Menjaga privasi data.
-Tidak mendedahkan maklumat peribadi atau maklumat sensitif.
-Mendokumentasikan limitasi model.
-Memastikan pengguna memahami bahawa keputusan model tidak semestinya 100% tepat.
-Menggalakkan semakan manusia terhadap hasil AI.
-🔒 11.0 Privasi dan Keselamatan Data
+```text
+kv_tron_detection_output.mp4
+```
 
-Repositori projek dikonfigurasikan sebagai Private Repository bagi mengawal akses kepada fail projek.
+Jumlah detection yang direkodkan sepanjang proses video adalah:
 
-Maklumat sensitif seperti:
+| Kelas Objek | Jumlah Detection |
+| ----------- | ---------------: |
+| Person      |              597 |
+| Car         |              120 |
+| Truck       |              120 |
+| Dog         |               21 |
 
-Password
-API Key
-Access Token
-Personal Information
-Credentials
+Proses video berjaya diselesaikan dan semua **lima FIX ME** telah disahkan selesai tanpa ralat.
+
+---
+
+# 10.0 SUMBER KOD DAN DATASET
+
+Sebarang kod rujukan atau sumber dataset yang digunakan dalam projek hendaklah dinyatakan dengan jelas dalam dokumentasi projek.
+
+Penggunaan kod, dataset, model atau bahan daripada pihak lain perlu menghormati **hak cipta** dan **lesen** yang berkaitan.
+
+Kod dan dataset tidak boleh dianggap sebagai hasil milik sendiri sekiranya ia diperoleh daripada sumber luar.
+
+Atribusi yang sesuai perlu diberikan kepada pemilik atau sumber asal.
+
+> **Nota:** Maklumat URL atau nama sumber asal hendaklah ditambah berdasarkan sumber sebenar kod dan dataset yang digunakan dalam notebook.
+
+---
+
+# 11.0 ETIKA DAN RESPONSIBLE AI
+
+Pembangunan projek ini mengambil kira prinsip **Responsible AI** dan etika profesional.
+
+Antara aspek yang diberi perhatian ialah:
+
+* Menghormati hak cipta dan harta intelek.
+* Menyatakan sumber asal kod dan dataset.
+* Tidak mendakwa kod atau dataset pihak lain sebagai hasil sendiri.
+* Menjaga privasi data yang digunakan.
+* Mengelakkan penggunaan data yang mengandungi maklumat peribadi tanpa kebenaran.
+* Mendokumentasikan limitasi model secara jelas.
+* Memastikan pengguna memahami bahawa output AI tidak semestinya sentiasa tepat.
+* Menggalakkan semakan manusia sebelum keputusan berdasarkan model digunakan.
+
+Repositori projek ditetapkan sebagai **Private Repository** bagi membantu mengawal akses kepada fail dan bahan projek.
+
+---
+
+# 12.0 PRIVASI DAN KESELAMATAN DATA
+
+Data yang digunakan dalam pembangunan Computer Vision perlu dikendalikan secara bertanggungjawab.
+
+Sekiranya dataset mengandungi imej manusia atau maklumat yang boleh mengenal pasti individu, privasi perlu diberi keutamaan.
+
+Fail yang mengandungi maklumat sensitif seperti:
+
+```text
+credentials
+password
+API key
+maklumat peribadi
+```
 
 tidak sepatutnya dimasukkan ke dalam repositori GitHub.
 
-Sekiranya dataset mengandungi imej manusia atau maklumat yang boleh mengenal pasti individu, data tersebut perlu dikendalikan dengan berhati-hati dan mengikut kebenaran serta tujuan penggunaan yang sesuai.
+Repositori **Private** digunakan bagi mengehadkan akses kepada bahan projek dan mengurangkan risiko pendedahan fail yang tidak sepatutnya dikongsi secara umum.
 
-⚠️ 12.0 Limitasi Model
+---
 
-Model Computer Vision mempunyai beberapa limitasi.
+# 13.0 LIMITASI MODEL
 
-Prestasi model boleh dipengaruhi oleh:
+Model Computer Vision mempunyai beberapa limitasi. Prestasi model bergantung kepada dataset, keadaan imej dan konfigurasi model yang digunakan.
 
-Kualiti dataset.
-Jumlah dan kepelbagaian data latihan.
-Pencahayaan imej.
-Saiz objek.
-Kedudukan objek.
-Objek yang terlindung.
-Perubahan keadaan persekitaran.
-Confidence threshold yang digunakan.
+Antara faktor yang boleh mempengaruhi keputusan ialah:
 
-Confidence score bukan jaminan bahawa sesuatu ramalan adalah benar. Nilai tersebut menunjukkan tahap keyakinan model terhadap sesuatu pengesanan atau klasifikasi.
+* Kualiti dan kepelbagaian dataset.
+* Pencahayaan imej.
+* Saiz dan kedudukan objek.
+* Objek yang terlindung atau sebahagiannya terlindung.
+* Perubahan persekitaran daripada data latihan.
+* Nilai confidence threshold yang digunakan.
 
-👤 13.0 Tanggungjawab Pengguna
+**Confidence score tidak bermaksud bahawa sesuatu ramalan adalah 100% benar.**
 
-Pengguna bertanggungjawab memastikan model digunakan secara beretika.
+Ia hanya menunjukkan tahap keyakinan model terhadap pengesanan atau klasifikasi tersebut.
+
+---
+
+# 14.0 TANGGUNGJAWAB PENGGUNA
+
+Pengguna bertanggungjawab menggunakan model AI secara beretika dan berhati-hati.
+
+Hasil daripada model perlu dianggap sebagai bantuan kepada pengguna dan bukan semestinya keputusan akhir.
 
 Pengguna perlu:
 
-Menyemak output model sebelum digunakan.
-Memahami limitasi model.
-Tidak bergantung sepenuhnya kepada keputusan AI.
-Menjaga privasi data.
-Menghormati hak cipta dataset dan kod.
-Memastikan penggunaan model sesuai dengan tujuan pembangunan.
+1. Menyemak keputusan model sebelum digunakan.
+2. Memahami limitasi model.
+3. Tidak menggunakan output model secara membuta tuli.
+4. Memastikan data yang digunakan mempunyai hak penggunaan yang sesuai.
+5. Menjaga privasi individu dalam dataset atau imej.
+6. Mendapatkan pengesahan manusia bagi keputusan yang memerlukan pertimbangan profesional.
 
-Bagi keputusan yang penting atau berisiko tinggi, semakan manusia perlu dilakukan sebelum keputusan akhir dibuat.
+---
 
-📝 14.0 Version Control
+# 15.0 VERSION CONTROL
 
-GitHub digunakan sebagai platform version control bagi menyimpan dan mengurus perubahan projek.
+**GitHub** digunakan untuk mengurus perubahan fail projek melalui **version control**.
 
-Contoh commit message yang digunakan:
+Setiap perubahan penting perlu direkodkan menggunakan commit message yang jelas dan profesional.
 
+Contoh commit message:
+
+```text
 Initial project setup
 Add CNN notebook
 Fix CNN input dimension
 Fix dataset path
 Add YOLO11n object detection
 Fix YOLO confidence threshold
-Fix YOLO IoU threshold
 Add confidence threshold experiment
 Add video inference
 Update README documentation
+```
 
-Commit message yang jelas membantu proses penjejakan perubahan dan memudahkan penyelenggaraan projek.
+Amalan ini membantu menjejaki perubahan yang dilakukan sepanjang proses pembangunan projek.
 
-📚 15.0 Sumber Kod dan Dataset
+---
 
-Kod dan dataset yang digunakan dalam projek perlu diberikan atribusi kepada sumber asal.
+# 16.0 KESIMPULAN
 
-Kod sumber:
+Projek ini berjaya menggabungkan pembangunan model **Computer Vision menggunakan CNN dan YOLO11n** dengan pengurusan projek melalui GitHub.
 
-[MASUKKAN SUMBER KOD SEBENAR DI SINI]
+Proses pembetulan kod, pengujian model, eksperimen confidence threshold dan video inference telah didokumentasikan secara sistematik.
 
-Dataset:
+Selain aspek teknikal, projek ini turut menekankan kepentingan **Responsible AI** melalui penghormatan terhadap hak cipta, pengurusan privasi data, dokumentasi limitasi model dan tanggungjawab pengguna.
 
-[MASUKKAN SUMBER DATASET SEBENAR DI SINI]
+Dokumentasi ini disediakan sebagai rujukan kepada jurutera atau pengguna lain supaya proses pembangunan dan penggunaan model Computer Vision dapat dilakukan secara lebih sistematik, selamat, beretika dan bertanggungjawab.
 
-Sebarang penggunaan kod, dataset atau model daripada pihak lain hendaklah mematuhi lesen dan syarat penggunaan yang ditetapkan oleh pemilik asal.
+---
 
-⚠️ Jangan masukkan sumber yang tidak benar. Gunakan sumber sebenar yang digunakan dalam notebook projek.
+## PROJECT INFORMATION
 
-📌 16.0 Kesimpulan
+| Perkara          | Maklumat                           |
+| ---------------- | ---------------------------------- |
+| Kursus           | DKA3223 – AI Untuk Computer Vision |
+| Projek           | Computer Vision                    |
+| Model            | CNN & YOLO11n                      |
+| Bahasa           | Python                             |
+| Platform         | Google Colab                       |
+| Framework        | PyTorch                            |
+| Object Detection | YOLO11n                            |
+| GPU              | NVIDIA Tesla T4                    |
+| Version Control  | GitHub                             |
+| Video Inference  | 120 Frames                         |
+| Repository       | Private Repository                 |
 
-Projek ini berjaya menggabungkan pembangunan model Computer Vision menggunakan CNN dan YOLO11n dengan pengurusan repositori GitHub secara sistematik.
+---
 
-Bagi CNN, beberapa pembetulan telah dilakukan termasuk pengurusan dataset path, GPU, visualisasi imej, saiz input model, bilangan kelas dan confidence score.
+## STATUS PROJEK
 
-Bagi YOLO11n pula, lima FIX ME telah diselesaikan melibatkan confidence threshold, IoU threshold, confidence values, object class field dan maximum frames. Model juga berjaya digunakan untuk pengesanan objek pada imej serta pemprosesan video.
+| Komponen                        | Status      |
+| ------------------------------- | ----------- |
+| CNN Simulation                  | ✅ Completed |
+| CNN Code Correction             | ✅ Completed |
+| YOLO11n Object Detection        | ✅ Completed |
+| Confidence Threshold Experiment | ✅ Completed |
+| Video Inference                 | ✅ Completed |
+| Responsible AI Documentation    | ✅ Completed |
+| Version Control                 | ✅ Completed |
+| README Documentation            | ✅ Completed |
 
-Selain aspek teknikal, projek ini memberi penekanan kepada Responsible AI, hak cipta, privasi data, limitasi model dan tanggungjawab pengguna. Pendekatan ini membantu memastikan pembangunan dan penggunaan Computer Vision dilakukan secara lebih sistematik, beretika dan bertanggungjawab.
+---
+
+**DKA3223 – AI Untuk Computer Vision**
+
+> Projek ini dibangunkan bagi tujuan pembelajaran, pengujian dan dokumentasi teknologi Artificial Intelligence dan Computer Vision.
